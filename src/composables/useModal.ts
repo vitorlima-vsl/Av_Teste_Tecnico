@@ -1,15 +1,11 @@
 import { ref } from 'vue';
 import { getUserInfo } from './useUserInfo'; 
 
-
 const openModal = ref<boolean>(false);
 const dataModal = ref<any>(null);
 const scrollOff = ref<boolean>(false);
 
-
-
 export const toggleModal = () => {
-  
   openModal.value = !openModal.value;
   scrollOff.value = !scrollOff.value;
   if(scrollOff.value){
@@ -19,7 +15,6 @@ export const toggleModal = () => {
     document.body.style.overflow = 'auto';
   }
 };
-
 
 export const createModal = async (data: { owner: { login: string } }) => {
   try {
@@ -37,6 +32,5 @@ export const createModal = async (data: { owner: { login: string } }) => {
     dataModal.value = null; 
   }
 };
-
 
 export { openModal, dataModal };

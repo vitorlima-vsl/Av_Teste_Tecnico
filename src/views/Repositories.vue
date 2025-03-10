@@ -8,12 +8,9 @@ import {openModal} from '@/composables/useModal';
 import UserModal from '@/components/UserModal.vue';
 import FilterComponent from '@/components/Filters/FilterComponent.vue';
 
-
 onMounted(async () => {
   await loadRepositories(1);
 });
-
-
 </script>
 
 <template>
@@ -29,5 +26,4 @@ onMounted(async () => {
     <UserModal 
     v-if="openModal"/>
   </div>
-
 </template>

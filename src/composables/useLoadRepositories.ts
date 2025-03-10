@@ -29,15 +29,14 @@ const extractTotalPagesFromLinkHeader = (linkHeader: string): number => {
   return lastParamPage;
 };
 
-
 const updateTotalPages = (linkHeader: string | undefined): void => {
   if (!linkHeader) {
     totalPages.value = 1;
   } else {
     const extractedPages = extractTotalPagesFromLinkHeader(linkHeader);
-    if (extractedPages > 0) {
-      totalPages.value = extractedPages;
-    }
+          if (extractedPages > 0) {
+        totalPages.value = extractedPages;
+      }
   }
 };
 
@@ -51,9 +50,8 @@ const loadRepositories = async (page: number): Promise<void> => {
       affiliation: 'owner',
     });
 
-    const filteredData = data.filter(repo => repo.name.includes(''));
-    repositories.value = filteredData;
-
+    
+    repositories.value = data;
    
     updateTotalPages(headers.link);
 
@@ -72,8 +70,8 @@ const searchRepositories = async (page: number): Promise<void> => {
     };
 
     const { data, headers } = await get<{ items: Repository[] }>('/search/repositories', params);
+    
     repositories.value = data.items;
-
 
     updateTotalPages(headers.link);
 
