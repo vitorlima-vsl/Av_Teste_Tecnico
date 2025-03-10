@@ -35,7 +35,9 @@ const updateTotalPages = (linkHeader: string | undefined): void => {
     totalPages.value = 1;
   } else {
     const extractedPages = extractTotalPagesFromLinkHeader(linkHeader);
-    totalPages.value = extractedPages > 0 ? extractedPages : 1;
+    if (extractedPages > 0) {
+      totalPages.value = extractedPages;
+    }
   }
 };
 
