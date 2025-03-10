@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+
+@theme {
+ --color-azul: #007bff;
+  --font-arrow: 'Inter', sans-serif;
+}
+
+@layer base {
+  /* Reset CSS personalizado */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    line-height: 1.5;
+  }
+
+  body {
+    background-color: #f9fafb; /* Exemplo de cor de fundo */
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button, input, textarea {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+
+}
