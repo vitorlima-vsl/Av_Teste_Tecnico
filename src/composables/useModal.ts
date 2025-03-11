@@ -10,10 +10,9 @@ export const toggleModal = () => {
   scrollOff.value = !scrollOff.value;
   if(scrollOff.value){
     document.body.style.overflow = 'hidden';
+    return;
   }
-  else{
-    document.body.style.overflow = 'auto';
-  }
+  document.body.style.overflow = 'auto';
 };
 
 export const createModal = async (data: { owner: { login: string } }) => {
@@ -25,7 +24,6 @@ export const createModal = async (data: { owner: { login: string } }) => {
     if (centerModal) {
       centerModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    
     console.log('createModal:', dataModal.value);
   } catch (error) {
     console.error('Nao conseguiu adquirir as informacoes de usuari:', error);
