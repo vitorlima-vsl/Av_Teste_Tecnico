@@ -6,27 +6,26 @@ import {
   searchRepositories
 } from "./useLoadRepositories";
 
+const isFirstPage     = () => currentPage.value <= 1;
+const isLastPage      = () => currentPage.value >= totalPages.value;
+const isSearchActive  = () => searchName.value !== '';
+
+const loadPage = (page: number) => {
+  if (isSearchActive()) {
+    searchRepositories(page);
+    return;
+  } 
+  loadRepositories(page);
+};
+
 const goToPreviousPage = () => {
-  if (currentPage.value > 1) {
-    if(searchName.value === ''){
-      loadRepositories(currentPage.value - 1);
-    }
-    else{
-      searchRepositories(currentPage.value - 1);
-    }
-  }
+  if (isFirstPage()) return;
+  loadPage(currentPage.value - 1);
 };
 
 const goToNextPage = () => {
-
-  if (currentPage.value < totalPages.value) {
-    if(searchName.value === ''){
-      loadRepositories(currentPage.value + 1);
-    }
-    else{
-      searchRepositories(currentPage.value + 1);
-    }
-  }
+  if (isLastPage()) return;
+  loadPage(currentPage.value + 1);
 };
 
 export { goToPreviousPage, goToNextPage };
